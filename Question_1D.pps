@@ -1,0 +1,23 @@
+//Adding the required dependancies for the function that will be used
+depends http
+depends output
+depends math
+depends map
+depends string
+
+// Call the skip on error function that skips line 9 if the call fails
+#skip_on_error
+val bitcoin_price_request = http::get("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd")
+
+// Format the bitcoin request to string format
+val bitcoin_json = string::format("{0}",bitcoin_price_request)
+val bitcoin_price = bitcoin_json::get("bitcoin.usd")
+
+// assigning the value 1.432 to owned_bitcoin
+val owned_bitcoin = 1.432
+
+// calculates the value of owned bitcoin
+val bit_coin_value = math::multi(bitcoin_price, owned_bitcoin)
+
+// Prints the results
+output::print("The Value of Owned Bitcoin is: {0}", bit_coin_value)
