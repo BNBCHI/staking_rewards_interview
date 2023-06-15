@@ -10,7 +10,7 @@ def estimate_apr(staking_ratio_base, target_staking_ratio):
     # if current ratio is 0.0567 then estimated ratio should be cross multiplied
     apr_base = (staking_ratio_base * current_apr) / current_staking_ratio
     calc_apr = (target_staking_ratio * apr_base) / staking_ratio_base
-    print(calc_apr)
+    print(calc_apr * 100)  # multiply by 100 to get the % value
 
 
 estimate_apr(staking_ratio_base=15, target_staking_ratio=50)
